@@ -32,8 +32,12 @@ minetest.register_chatcommand("lant_stop", {
 
 minetest.register_chatcommand("lant_set", {
 	params = "",
-	description = "Stop langton_ant process",
+	description = "",
 	privs = {langton_ant_global=true},
 	func = function(name,params)
+		local name,value = string.match(params,"([^ ]+) (.+)")
+		if name and value then
+			langton_ant.setvar(name,value)
+		end
 	end
 })
